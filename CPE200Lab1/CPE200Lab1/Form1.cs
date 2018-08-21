@@ -12,7 +12,8 @@ namespace CPE200Lab1
 {
     public partial class Form1 : Form
     {
-        double first,second,result;
+        double first,second,result,firstp;
+        bool percent;
         string operation;
         public Form1()
         {
@@ -60,7 +61,8 @@ namespace CPE200Lab1
 
         private void btnPercent_Click(object sender, EventArgs e)
         {
-
+            percent = true;
+            firstp = (Convert.ToDouble(lblDisplay.Text) * first) / 100;
         }
 
         private void btnDivide_Click(object sender, EventArgs e)
@@ -75,19 +77,47 @@ namespace CPE200Lab1
             second = Convert.ToDouble(lblDisplay.Text);
             if (operation == "+")
             {
-                 result = first + second;
+                if (percent = false)
+                {
+                    result = first + second;
+                }
+                else
+                {
+                    result = first + firstp;
+                }  
             }
             else if(operation == "-")
             {
-                 result = first - second;
+                if (percent = false)
+                {
+                    result = first - second;
+                }
+                else
+                {
+                    result = first - firstp;
+                }
             }
             else if (operation == "*")
             {
-                 result = first * second;
+                if (percent = false)
+                {
+                    result = first * second;
+                }
+                else
+                {
+                    result = first * firstp;
+                }
             }
             else
             {
-                 result = first / second;
+                if (percent = false)
+                {
+                    result = first / second;
+                }
+                else
+                {
+                    result = first / firstp;
+                }
             }
             lblDisplay.Text = Convert.ToString(result);
         }
