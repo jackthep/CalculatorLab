@@ -13,7 +13,7 @@ namespace CPE200Lab1
     public partial class Form1 : Form
     {
         double firstNum,secondNum,result,percentValue;
-        bool percent=false;
+        bool percentPressed=false;
         string operation;
         public Form1()
         {
@@ -24,7 +24,7 @@ namespace CPE200Lab1
         {
             
             lblDisplay.Text = "0";
-            percent = false;
+            percentPressed = false;
         }
         private void btnX_click(object sender, EventArgs e)
         {
@@ -71,7 +71,7 @@ namespace CPE200Lab1
 
         private void btnPercent_Click(object sender, EventArgs e)
         {
-            percent = true;
+            percentPressed = true;
             percentValue = (Convert.ToDouble(lblDisplay.Text) * firstNum) / 100;
         }
 
@@ -87,50 +87,50 @@ namespace CPE200Lab1
             secondNum = Convert.ToDouble(lblDisplay.Text);
             if (operation == "+")
             {
-                if (percent == false)
+                if (percentPressed == false)
                 {
                     result = firstNum + secondNum;
                 }
                 else
                 {
                     result = firstNum + percentValue;
-                    percent = false;
+                    percentPressed = false;
                 }  
             }
             else if(operation == "-")
             {
-                if (percent == false)
+                if (percentPressed == false)
                 {
                     result = firstNum - secondNum;
                 }
                 else
                 {
                     result = firstNum - percentValue;
-                    percent = false;
+                    percentPressed = false;
                 }
             }
             else if (operation == "*")
             {
-                if (percent == false)
+                if (percentPressed == false)
                 {
                     result = firstNum * secondNum;
                 }
                 else
                 {
                     result = firstNum * percentValue;
-                    percent = false;
+                    percentPressed = false;
                 }
             }
             else
             {
-                if (percent == false)
+                if (percentPressed == false)
                 {
                     result = firstNum / secondNum;
                 }
                 else
                 {
                     result = firstNum / percentValue;
-                    percent = false;
+                    percentPressed = false;
                 }
             }
             lblDisplay.Text = Convert.ToString(result);
