@@ -12,7 +12,7 @@ namespace CPE200Lab1
 {
     public partial class Form1 : Form
     {
-        double first,second,result,firstp;
+        double firstNum,secondNum,result,percentValue;
         bool percent=false;
         string operation;
         public Form1()
@@ -48,21 +48,21 @@ namespace CPE200Lab1
 
         private void btnPlus_Click(object sender, EventArgs e)
         {
-            first = Convert.ToDouble(lblDisplay.Text);
+            firstNum = Convert.ToDouble(lblDisplay.Text);
             lblDisplay.Text = "0";
             operation = "+";
         }
 
         private void btnMinus_Click(object sender, EventArgs e)
         {
-            first = Convert.ToDouble(lblDisplay.Text);
+            firstNum = Convert.ToDouble(lblDisplay.Text);
             lblDisplay.Text = "0";
             operation = "-";
         }
 
         private void btnMultiply_Click(object sender, EventArgs e)
         {
-            first = Convert.ToDouble(lblDisplay.Text);
+            firstNum = Convert.ToDouble(lblDisplay.Text);
             lblDisplay.Text = "0";
             operation = "*";
         }
@@ -72,28 +72,28 @@ namespace CPE200Lab1
         private void btnPercent_Click(object sender, EventArgs e)
         {
             percent = true;
-            firstp = (Convert.ToDouble(lblDisplay.Text) * first) / 100;
+            percentValue = (Convert.ToDouble(lblDisplay.Text) * firstNum) / 100;
         }
 
         private void btnDivide_Click(object sender, EventArgs e)
         {
-            first = Convert.ToDouble(lblDisplay.Text);
+            firstNum = Convert.ToDouble(lblDisplay.Text);
             lblDisplay.Text = "0";
             operation = "/";
         }
 
         private void btnEqual_Click(object sender, EventArgs e)
         {
-            second = Convert.ToDouble(lblDisplay.Text);
+            secondNum = Convert.ToDouble(lblDisplay.Text);
             if (operation == "+")
             {
                 if (percent == false)
                 {
-                    result = first + second;
+                    result = firstNum + secondNum;
                 }
                 else
                 {
-                    result = first + firstp;
+                    result = firstNum + percentValue;
                     percent = false;
                 }  
             }
@@ -101,11 +101,11 @@ namespace CPE200Lab1
             {
                 if (percent == false)
                 {
-                    result = first - second;
+                    result = firstNum - secondNum;
                 }
                 else
                 {
-                    result = first - firstp;
+                    result = firstNum - percentValue;
                     percent = false;
                 }
             }
@@ -113,11 +113,11 @@ namespace CPE200Lab1
             {
                 if (percent == false)
                 {
-                    result = first * second;
+                    result = firstNum * secondNum;
                 }
                 else
                 {
-                    result = first * firstp;
+                    result = firstNum * percentValue;
                     percent = false;
                 }
             }
@@ -125,11 +125,11 @@ namespace CPE200Lab1
             {
                 if (percent == false)
                 {
-                    result = first / second;
+                    result = firstNum / secondNum;
                 }
                 else
                 {
-                    result = first / firstp;
+                    result = firstNum / percentValue;
                     percent = false;
                 }
             }
