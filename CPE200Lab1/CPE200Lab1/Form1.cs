@@ -38,6 +38,13 @@ namespace CPE200Lab1
                 lblDisplay.Text = lblDisplay.Text + btn.Text;
             }
         }
+        private void btnDot_Click(object sender,EventArgs e)
+        {
+            if (!(lblDisplay.Text.Contains(".")))
+            {
+                lblDisplay.Text = lblDisplay.Text + ".";
+            }
+        }
 
         private void btnPlus_Click(object sender, EventArgs e)
         {
