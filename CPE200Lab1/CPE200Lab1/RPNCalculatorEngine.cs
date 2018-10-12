@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace CPE200Lab1
 {
-    public class RPNCalculatorEngine : CalculatorEngine
+    public class RPNCalculatorEngine : basicCalculatorEngine
     {
+        protected Stack<string> stack;
         private bool isNumber(string str)
         {
             double retNum;
@@ -42,7 +43,7 @@ namespace CPE200Lab1
 
         public new string Process(string str)
         {
-            Stack<string> stack = new Stack<string>();
+            stack = new Stack<string>();
             string[] parts = str.Split(' ');
             if (parts.Length == 1)
             {
@@ -59,7 +60,7 @@ namespace CPE200Lab1
                     string first;
                     first = stack.Peek();
                     stack.Pop();
-                    stack.Push(unaryCalculate(parts[i], first, 8));
+                    stack.Push(calculate(parts[i], first, 8));
                 }
                 else if (parts[i] == "%")
                 {

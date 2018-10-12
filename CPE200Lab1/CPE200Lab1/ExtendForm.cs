@@ -12,14 +12,13 @@ namespace CPE200Lab1
 {
     public partial class ExtendForm : Form
     {
-
         private string firstOperand;
-        private string operate;
+        protected string operate;
         private bool isNumberPart = false;
-        private bool isContainDot = false;
+        protected bool isContainDot = false;
         private bool isSpaceAllowed = false;
         private CalculatorEngine engine;
-        private RPNCalculatorEngine RPNengine;
+        protected RPNCalculatorEngine RPNengine;
 
         public ExtendForm()
         {
@@ -91,7 +90,7 @@ namespace CPE200Lab1
                 firstOperand = lblDisplay.Text;
             }
 
-            string result = engine.unaryCalculate(operate, firstOperand);
+            string result = engine.calculate(operate, firstOperand);
             if (result is "E" || result.Length > 8)
             {
                 lblDisplay.Text = "Error";
@@ -107,10 +106,6 @@ namespace CPE200Lab1
                     isSpaceAllowed = false;
                 }
             }
-
-
-
-
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -145,18 +140,25 @@ namespace CPE200Lab1
 
         private void btnEqual_Click(object sender, EventArgs e)
         {
-            string result = engine.Process(lblDisplay.Text);
-            if (result is "E")
+            try
             {
+                string result = engine.Process(lblDisplay.Text);
+                    if (result is "E")
+                {
                 result = RPNengine.Process(lblDisplay.Text);
-                if (result is "E")
+                    if (result is "E")
                 {
                     lblDisplay.Text = "Error";
                 }
                 else lblDisplay.Text = result;
                 return;
+                }
+                    lblDisplay.Text = result;
+                }
+            catch
+            {
+                lblDisplay.Text = lblDisplay.Text;
             }
-            lblDisplay.Text = result;
         }
 
         private void btnSign_Click(object sender, EventArgs e)
